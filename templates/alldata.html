@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} alldata {% endblock title %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="display" id="example" width="100%" cellspacing="0" style="text-align: center;">
+        <thead class="table-success">
+            <tr>
+                <th>Departure Station</th>
+                <th>Station ID</th>
+                <th>Departure Time</th>
+                <th>Destination</th>
+                <th>Station ID</th>
+                <th>Return Time</th>
+                <th>Duration (min)</th>
+                <th>Distance (km)</th>
+            </tr>
+        </thead>
+        <!-- For JSON -->
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}search{% endblock title %}
+
+{% block content %}
+
+<!-- reference to https://stackoverflow.com/questions/32639759/search-bar-with-filter-bootstrap -->
+
+<div class="col-md-9 col-md-push-1">
+    <h3 class="text-center">Search by category</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <form method='get' id="searchForm" class="input-group"> {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <div class="input-group-btn search-panel">
+                        <select name="search_param" id="search_param" class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown">
+                            <!-- <option value="all">All</option>
+                            <option value="time_depart">Date</option>
+                            <option value="depart_stn_name">Station</option>
+                            <option value="return_stn_id">Station ID</option> -->
+
+                            <option value="{{ search_df_date }}">
+                                Date
+                            </option>
+                            <option value="{{ search_df_station }}">
+                                Station
+                            </option>
+                            <option value="{{ search_df_id }}">
+                                Station ID
+                            </option>
+
+                        </select>
+
+                    </div>
+                    <input type="text" class="form-control" name="i" placeholder="Search datatable...">
+                    <!--  <span class="input-group-btn"> -->
+                    <button class="btn btn-default" type="submit" value={{search_path}}> Submit
+                        <!-- <span class="glyphicon glyphicon-search"></span> -->
+                    </button>
+                    <!-- </span> -->
+                </form><!-- end form -->
+            </div><!-- end col-xs-8 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end col-md-9 -->
+
+{% endblock content %}

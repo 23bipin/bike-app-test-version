@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}datatable{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Helsinki Bike</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display" id="example" width="100%" cellspacing="0" style="text-align: center;">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Departure Station</th>
+                            <th>Station ID</th>
+                            <th>Departure Time</th>
+                            <th>Destination</th>
+                            <th>Station ID</th>
+                            <th>Return Time</th>
+                            <th>Duration (min)</th>
+                            <th>Distance (km)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if d %}
+                        {% for i in d %}
+                        <tr>
+                            <td>{{i.depart_stn_name}}</td>
+                            <td>{{i.depart_stn_id}}</td>
+                            <td>{{i.time_depart}}</td>
+                            <td>{{i.return_stn_name}}</td>
+                            <td>{{i.return_stn_id}}</td>
+                            <td>{{i.time_return}}</td>
+                            <td>{{i.duration}}</td>
+                            <td>{{i.distance}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
